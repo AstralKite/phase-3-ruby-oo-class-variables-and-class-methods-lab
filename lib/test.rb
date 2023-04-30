@@ -31,14 +31,26 @@ class Song
 
 
     def self.genre_count
-        @@genres.tally
-    end
-
-    def self.genre_count
-        @@genres.tally
-    end
-
-    def self.artist_count
-        @@artists.tally
+        genre_count = {}
+        @@genres.each do |genre|
+            if genre_count[genre]
+                genre_count[genre] += 1
+            else
+                genre_count[genre] = 1
+            end
+        end
+        genre_count
     end
 end
+
+
+s1 = Song.new("1name", "1art", "1gen")
+
+s2 = Song.new("2name", "2art", "2gen")
+
+s3 = Song.new("3name", "3art", "3gen")
+s3a = Song.new("3name", "3art", "3gen")
+s3b = Song.new("3name", "3art", "3gen")
+
+
+print Song.genre_count
